@@ -46,7 +46,7 @@ func main() {
 	deposit(&account, 2000.0)
 
 	fmt.Println("Withdrawing 1000.00...")
-	withdraw(&account, 1000.0)
+	withdraw(&account, 2000.0)
 
 	fmt.Println("Updating account holder name...")
 	updateName(&account, "GodswillCodes")
