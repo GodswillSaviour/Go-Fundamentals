@@ -2,14 +2,33 @@ package main
 
 import "fmt"
 
-func calculate(a, b int) (int, int) {
-    sum := a + b
-    difference := a - b
-    return sum, difference
+type Movie struct {
+	Name   string
+	Rating int
+	Year   int
+}
+
+func (m Movie) getCategory() string {
+if m.Rating >= 8 {
+return "Excellent"
+}else if m.Rating >= 5 {
+return "Good"
+}else{
+return "Poor"
+}
 }
 
 func main() {
-    sum, difference := calculate(10, 3)
-    fmt.Println(sum)        // 13
-    fmt.Println(difference) // 7
+movies := []Movie{
+{"Inception", 9, 2010},
+{"Avatar", 7, 2009},
+{"Interstellar", 10, 2014},
+{"Titanic", 6, 1997},
+{"Unknown", 4, 2020},
+}
+
+
+for _, movie := range movies {
+fmt.Printf("Name: %s, Year: %d, Rating: %d, Category: %s\n", movie.Name, movie.Year, movie.Rating, movie.getCategory())
+}
 }
