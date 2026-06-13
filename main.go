@@ -2,33 +2,29 @@ package main
 
 import "fmt"
 
-type Movie struct {
-	Name   string
-	Rating int
-	Year   int
+type Animal interface {
+    speak() string
 }
 
-func (m Movie) getCategory() string {
-if m.Rating >= 8 {
-return "Excellent"
-}else if m.Rating >= 5 {
-return "Good"
-}else{
-return "Poor"
+type Dog struct{}
+type Cat struct{}
+
+func (d Dog) speak() string {
+    return "Woof!"
 }
+
+func (c Cat) speak() string {
+    return "Meow!"
+}
+
+func makeSound(a Animal) {
+    fmt.Println(a.speak())
 }
 
 func main() {
-movies := []Movie{
-{"Inception", 9, 2010},
-{"Avatar", 7, 2009},
-{"Interstellar", 10, 2014},
-{"Titanic", 6, 1997},
-{"Unknown", 4, 2020},
-}
+    dog := Dog{}
+    cat := Cat{}
 
-
-for _, movie := range movies {
-fmt.Printf("Name: %s, Year: %d, Rating: %d, Category: %s\n", movie.Name, movie.Year, movie.Rating, movie.getCategory())
-}
+    makeSound(dog)
+    makeSound(cat)
 }
